@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do App</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Навігація</h2>
+      <button id="themeToggle" class="theme-toggle">🌙 Темна тема</button>
+      <ul id="defaultLists">
+        <li onclick="selectDefaultList('all')">📋 Усі завдання</li>
+        <li onclick="selectDefaultList('today')">☀️ Мій день</li>
+        <li onclick="selectDefaultList('important')">⭐ Важливі</li>
+        <li onclick="selectDefaultList('completed')">✅ Виконані</li>
+      </ul>
+
+      <h2>Мої списки</h2>
+      <div class="list-creator">
+        <input type="text" id="listInput" placeholder="Новий список...">
+        <button onclick="addCustomList()">+</button>
+      </div>
+      <ul id="customLists"></ul>
+    </aside>
+
+    <main class="main">
+      <div id="listHeaderContainer"></div>
+
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Пошук завдань...">
+      </div>
+
+      <div class="input-container" id="taskInputContainer">
+        <input type="text" id="taskInput" placeholder="Нове завдання...">
+        <input type="date" id="deadlineInput">
+        <select id="tagInput">
+          <option value="">Без мітки</option>
+          <option value="Робота">Робота</option>
+          <option value="Навчання">Навчання</option>
+          <option value="Дім">Дім</option>
+          <option value="Особисте">Особисте</option>
+        </select>
+        <button onclick="addTask()">Додати</button>
+      </div>
+
+      <div class="sort-container">
+        <label for="sortSelect">Сортувати:</label>
+        <select id="sortSelect" onchange="renderTasks()">
+          <option value="none">Без сортування</option>
+          <option value="alphabet">По алфавіту</option>
+          <option value="addedDate">По даті додавання</option>
+          <option value="deadline">По терміну виконання</option>
+          <option value="important">По важливості</option>
+          <option value="tag">По мітці</option>
+        </select>
+      </div>
+
+      <div class="filter-container">
+        <label>
+          <input type="checkbox" id="incompleteOnly">
+          Показувати лише невиконані
+        </label>
+      </div>
+
+      <div id="progressContainer">
+        <div id="progressText">Прогрес: 0 із 0</div>
+        <div id="progressBarBackground">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+
+      <ul id="taskList"></ul>
+    </main>
+  </div>
+
+  <!-- Модальне вікно для підтвердження видалення завдання -->
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <p>Ви дійсно хочете видалити це завдання?</p>
+      <div class="modal-buttons">
+        <button id="confirmYes">Так</button>
+        <button id="confirmNo">Ні</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="lists.js"></script>
+  <script src="tasks.js"></script>
+  <script src="ui.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
