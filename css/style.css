@@ -1,0 +1,732 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #202124;
+    color: #e8eaed;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 280px;
+    background: #2c2c2c;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .sidebar h2 {
+    margin-top: 0;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+  }
+  
+  .list-creator {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .list-creator input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .list-creator button {
+    padding: 8px;
+    border: none;
+    background: #1a73e8;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+    background: #424242;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .sidebar ul li:hover,
+  .sidebar ul li.active {
+    background: #5c5c5c;
+  }
+  
+  .main {
+    flex: 1;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  /* 🆕 Блок заголовка списку */
+  .list-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .list-header h2 {
+    margin: 0;
+    font-size: 1.8em;
+    flex-grow: 1;
+  }
+  
+  .list-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .input-container input[type="text"],
+  .input-container input[type="date"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: #e8eaed;
+  }
+  
+  .input-container input[type="text"] {
+    flex: 1;
+  }
+  
+  .input-container button {
+    padding: 10px;
+    border: none;
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sort-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sort-container select {
+    padding: 8px;
+    background: #333;
+    color: #e8eaed;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  ul#taskList li {
+    background: #424242;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s, opacity 0.3s;
+  }
+  
+  li.completed {
+    background: #383838;
+    opacity: 0.8;
+  }
+  
+  .task-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .task-checkbox {
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  
+  .task-text {
+    background: transparent;
+    border: none;
+    color: #e8eaed;
+    font-size: 16px;
+    flex-grow: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+    transition: color 0.4s ease, text-decoration 0.4s ease, opacity 0.4s ease;
+  }
+  
+  .task-text:disabled {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .task-text:focus {
+    outline: 1px solid #1a73e8;
+    background: #333;
+  }
+  
+  .task-buttons {
+    display: flex;
+    flex-shrink: 0;
+    gap: 5px;
+  }
+  
+  .task-buttons button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .task-date {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 5px;
+    margin-left: 28px;
+  }
+  
+  .task-list-name {
+    font-size: 11px;
+    color: #888;
+    margin-top: 3px;
+    margin-left: 28px;
+  }
+  
+  .date-picker {
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+  }
+  
+  .completed-text {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+  
+  .task-text.urgent {
+    color: #ff4c4c; /* червоний для термінових */
+    font-weight: 600;
+  }
+  
+  .task-text.important {
+    color: #ffa500; /* оранжевий для важливих */
+  }
+  
+  .task-text.completed {
+    color: #4caf50; /* зелений для завершених */
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  #searchInput {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background: #333;
+    color: #e8eaed;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: background 0.3s, border 0.3s;
+  }
+  
+  #searchInput:focus {
+    background: #444;
+    border: 1px solid #1a73e8;
+  }
+
+  #taskInputContainer {
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Анімація появи завдань */
+  .task-appear {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .task-appear.show {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  /* Анімація видалення завдання */
+.task-disappear {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  #progressContainer {
+    margin-bottom: 20px;
+  }
+  
+  #progressText {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  #progressBarBackground {
+    width: 100%;
+    height: 8px;
+    background: #555;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  #progressBar {
+    height: 100%;
+    width: 0%;
+    background: #1a73e8;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+  }
+  
+  ul#taskList li {
+    background: #424242;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s, opacity 0.3s, transform 0.2s;
+  }
+  
+  ul#taskList li:hover {
+    background: #505050;
+    transform: scale(1.01);
+  }
+
+  .task-tag {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    margin-left: 28px;
+  }
+
+  .input-container select {
+    padding: 10px;
+    background: #333;
+    color: #e8eaed;
+    border: none;
+    border-radius: 5px;
+  }
+
+  body.light {
+    background: #f1f1f1;
+    color: #333;
+  }
+  
+  body.light .sidebar {
+    background: #e0e0e0;
+  }
+  
+  body.light .main {
+    background: #f9f9f9;
+  }
+  
+  body.light ul#taskList li {
+    background: #e0e0e0;
+  }
+  
+  body.light .sidebar ul li {
+    background: #d4d4d4;
+  }
+  
+  body.light .input-container input,
+  body.light .input-container select {
+    background: #ddd;
+    color: #333;
+  }
+  
+  body.light .sort-container select,
+  body.light .search-container input {
+    background: #ddd;
+    color: #333;
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: 1px solid #888;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  body.light .theme-toggle {
+    color: black;
+    border-color: #333;
+  }
+  
+  body.light .task-text {
+    color: #000; /* Чорний текст у світлій темі */
+  }
+  
+  body.light .task-text.urgent {
+    color: #d32f2f; /* Червоний для термінових */
+  }
+  
+  body.light .task-text.important {
+    color: #f57c00; /* Помаранчевий для важливих */
+  }
+  
+  body.light .task-text.completed {
+    color: #388e3c; /* Зелений для виконаних */
+  }
+  
+  .task-count {
+    font-size: 0.85em;
+    color: #bbb;
+    margin-left: 8px;
+  }
+
+  .task-new {
+    transform: scale(0.7);
+    opacity: 0;
+    animation: taskPop 0.3s forwards;
+  }
+  
+  @keyframes taskPop {
+    0% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .filter-container {
+  margin-bottom: 20px;
+  color: #bbb;
+}
+
+.modal {
+    display: none; /* Приховано за замовчуванням */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* щоб було поверх всіх елементів */
+  }
+  
+  .modal-content {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .modal-buttons button:hover {
+    background-color: #1665c1;
+  }
+  
+  #confirmModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  #confirmModalContent {
+    background: #2c2c2c;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px; /* Зменшено ширину */
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: popup 0.3s ease;
+  }
+  
+  #confirmModalContent p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #e8eaed;
+  }
+  
+  #confirmModalContent button {
+    padding: 8px 18px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 6px;
+    background: #1a73e8;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  
+  #confirmModalContent button:hover {
+    background: #155ab6;
+  }
+  
+  @keyframes popup {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+ /* Вкладка "Усі завдання" */
+.main.all-theme {
+    background-color: #eceff1; /* Світло-сірий фон */
+    color: #212121; /* Темний текст */
+  }
+  
+  /* Вкладка "Мій день" */
+  .main.today-theme {
+    background-color: #fffde7; /* Світлий жовто-кремовий фон */
+    color: #212121;
+  }
+  
+  /* Вкладка "Важливі" */
+  .main.important-theme {
+    background-color: #e3f2fd; /* Світло-блакитний */
+    color: #212121;
+  }
+  
+  /* Вкладка "Виконані" */
+  .main.completed-theme {
+    background-color: #e8f5e9; /* Світло-зелений */
+    color: #212121;
+  }
+  
+  /* Світла тема */
+body.light-theme .main {
+    color: #212121; /* Темний текст у світлій темі */
+  }
+  
+  body.light-theme input,
+  body.light-theme select,
+  body.light-theme label,
+  body.light-theme #progressText {
+    color: #212121;
+  }
+  
+  /* Темна тема */
+  body.dark-theme .main {
+    color: #e8eaed; /* Світлий текст у темній темі */
+  }
+  
+  body.dark-theme input,
+  body.dark-theme select,
+  body.dark-theme label,
+  body.dark-theme #progressText {
+    color: #e8eaed;
+  }
+  
+  .drag-over {
+    border: 2px dashed #1a73e8;
+    background-color: #e3f2fd;
+  }
+
+  .task-count {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-left: 5px;
+  }
+
+  #editModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #editModal .modal-content {
+    background-color: #2c2c2c;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* зменшено ширину */
+  }
+  
+  #editModal h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #fff;
+  }
+  
+  #editInput {
+    width: 90%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  #editModal .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  #editModal .modal-buttons button {
+    padding: 8px 16px;
+    font-size: 15px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #editModal .modal-buttons button:hover {
+    background-color: #1669c1;
+  }
+  
+  .list-title {
+    font-size: 24px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+    flex-grow: 1; /* <<< Ось що потрібно */
+    min-width: 0; /* <<< Щоб працювало правильне обрізання */
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .list-title-input {
+    font-size: 24px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+    width: 300px; /* <<< Виправив max-width на width */
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  
+  .list-header-buttons button {
+    margin-left: 8px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .list-header-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  #customLists li {
+    background-color: #424242;
+    color: #e8eaed;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    word-break: break-word; /* переносить слово на новий рядок */
+    overflow-wrap: break-word;
+  }
+  
+  #customLists li span {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
